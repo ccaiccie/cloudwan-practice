@@ -1,0 +1,9 @@
+{
+  "routes": [
+    { "prefix": "10.0.0.0/8", "as-path": [65010], "communities": [] },
+    { "prefix": "10.1.0.0/16", "as-path": [65010], "communities": ["65010:50"] },
+    { "prefix": "192.168.1.0/24", "as-path": [65010], "communities": ["65010:50"] },
+    { "prefix": "172.16.0.0/12", "as-path": [65020], "communities": ["65010:50"] },
+    { "prefix": "172.17.0.0/16", "as-path": [65020], "med": 7, "communities": ["65010:60", "65020:1"] }
+  ]
+}

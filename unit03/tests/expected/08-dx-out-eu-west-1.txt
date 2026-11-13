@@ -1,0 +1,2 @@
+policies: markEuWest1(#310 outbound)
+ALLOW 10.200.0.0/16 by=default changed-by=markEuWest1#100 as-path=64513 med=- lp=- communities=65001:1002

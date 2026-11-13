@@ -1,0 +1,7 @@
+# Routes in the BGP table of our edge router (illustrative)
+# prefix           learned from        communities            as-path
+10.10.0.0/16       local (PROD-NETS)   -                      -
+10.20.0.0/16       local (DR-NETS)     -                      -
+10.90.0.0/24       local (LAB-NETS)    65001:900              -
+198.51.100.0/24    provider 64999      64999:8100             64999
+203.0.113.0/24     provider 64999      64999:8200             64999 64998

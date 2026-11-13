@@ -1,0 +1,6 @@
+{
+  "description": "Local routes the eu-west-1 core network edge advertises toward the Direct Connect gateway (illustrative values).",
+  "routes": [
+    { "prefix": "10.200.0.0/16", "as-path": [64513], "communities": [], "note": "prod VPC in eu-west-1" }
+  ]
+}

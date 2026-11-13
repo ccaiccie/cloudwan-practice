@@ -1,0 +1,34 @@
+{
+  "version": "2021.12",
+  "core-network-configuration": {
+    "asn-ranges": ["64512-64555"],
+    "edge-locations": [
+      { "location": "us-east-1" },
+      { "location": "eu-west-1" }
+    ]
+  },
+
+  "segments": [
+    { "name": "prod" },
+    { "name": "dev",
+      "require-attachment-acceptance": false },
+    { "name": "shared" }
+  ],
+
+  "segment-actions": [
+    { "action": "share",
+      "mode": "attachment-route",
+      "segment": "shared",
+      "share-with": ["prod", "dev"] }
+  ],
+
+  "attachment-policies": [
+    { "rule-number": 100,
+      "conditions": [
+        { "type": "tag-exists", "key": "segment" }
+      ],
+      "action": {
+        "association-method": "tag",
+        "tag-value-of-key": "segment" } }
+  ]
+}

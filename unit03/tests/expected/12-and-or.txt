@@ -1,0 +1,6 @@
+policies: andOrDemo(#20 inbound)
+ALLOW 10.0.0.0/8 by=default as-path=65010 med=- lp=- communities=-
+ALLOW 10.1.0.0/16 by=default changed-by=andOrDemo#10 as-path=65010 med=50 lp=- communities=65010:50
+ALLOW 192.168.1.0/24 by=default changed-by=andOrDemo#10 as-path=65010 med=50 lp=- communities=65010:50
+ALLOW 172.16.0.0/12 by=default as-path=65020 med=- lp=- communities=65010:50
+ALLOW 172.17.0.0/16 by=default changed-by=andOrDemo#20 as-path=65020 med=7 lp=- communities=65020:1

@@ -1,0 +1,10 @@
+policies: drOnlyIn(#110 inbound)
+DROP  10.10.0.0/16 by=drOnlyIn#200
+DROP  10.11.0.0/16 by=drOnlyIn#200
+ALLOW 10.20.0.0/16 by=drOnlyIn#100 as-path=65001 med=- lp=- communities=65001:200
+DROP  10.30.0.0/16 by=drOnlyIn#200
+DROP  10.40.0.0/16 by=drOnlyIn#200
+dx  10.50.0.0/16 removed 65001:100:7 (large community)
+dx  10.50.0.0/16 removed rt:65001:100 (extended community)
+dx  10.50.0.0/16 removed 7224:7300 (AWS-reserved ASN)
+DROP  10.50.0.0/16 by=drOnlyIn#200

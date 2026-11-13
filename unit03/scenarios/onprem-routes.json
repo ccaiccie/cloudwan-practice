@@ -1,0 +1,11 @@
+{
+  "description": "Routes the on-premises router advertises over the transit virtual interface (illustrative values).",
+  "routes": [
+    { "prefix": "10.10.0.0/16", "as-path": [65001], "communities": ["65001:100"], "note": "prod applications" },
+    { "prefix": "10.11.0.0/16", "as-path": [65001], "communities": ["65001:100", "65001:310"], "note": "prod database, enter via us-east-1" },
+    { "prefix": "10.20.0.0/16", "as-path": [65001], "communities": ["65001:200"], "note": "disaster recovery" },
+    { "prefix": "10.30.0.0/16", "as-path": [65001], "communities": ["65001:100", "65001:400"], "note": "prod, must stay in us-east-1" },
+    { "prefix": "10.40.0.0/16", "as-path": [65001], "communities": [], "note": "untagged" },
+    { "prefix": "10.50.0.0/16", "as-path": [65001], "communities": ["65001:100:7", "rt:65001:100", "7224:7300"], "note": "tagged the wrong way" }
+  ]
+}

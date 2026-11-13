@@ -1,0 +1,10 @@
+policies: keepInUsEast1(#150 inbound) enterViaUsEast1(#200 inbound)
+ALLOW 10.10.0.0/16 by=default as-path=65001 med=- lp=- communities=65001:100
+ALLOW 10.11.0.0/16 by=default changed-by=enterViaUsEast1#100 as-path=65001 65001 65001 med=- lp=- communities=65001:100,65001:310
+ALLOW 10.20.0.0/16 by=default as-path=65001 med=- lp=- communities=65001:200
+DROP  10.30.0.0/16 by=keepInUsEast1#100
+ALLOW 10.40.0.0/16 by=default as-path=65001 med=- lp=- communities=-
+dx  10.50.0.0/16 removed 65001:100:7 (large community)
+dx  10.50.0.0/16 removed rt:65001:100 (extended community)
+dx  10.50.0.0/16 removed 7224:7300 (AWS-reserved ASN)
+ALLOW 10.50.0.0/16 by=default as-path=65001 med=- lp=- communities=-

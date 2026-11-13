@@ -1,0 +1,4 @@
+policies: markUsEast1(#300 outbound)
+ALLOW 10.100.0.0/16 by=default changed-by=markUsEast1#100 as-path=64512 med=- lp=- communities=65001:1001
+ALLOW 10.110.0.0/16 by=default changed-by=markUsEast1#100 as-path=64512 med=- lp=- communities=65001:1001
+ALLOW 172.16.8.0/24 by=default changed-by=markUsEast1#100 as-path=64512 65010 med=- lp=- communities=65010:50,65001:1001

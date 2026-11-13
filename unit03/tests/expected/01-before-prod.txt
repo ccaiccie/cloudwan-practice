@@ -1,0 +1,16 @@
+policies: prodOnlyIn(#100 inbound)
+dx  10.10.0.0/16 removed 65001:100 (before Nov 2026: not carried to Cloud WAN)
+DROP  10.10.0.0/16 by=prodOnlyIn#200
+dx  10.11.0.0/16 removed 65001:100 (before Nov 2026: not carried to Cloud WAN)
+dx  10.11.0.0/16 removed 65001:310 (before Nov 2026: not carried to Cloud WAN)
+DROP  10.11.0.0/16 by=prodOnlyIn#200
+dx  10.20.0.0/16 removed 65001:200 (before Nov 2026: not carried to Cloud WAN)
+DROP  10.20.0.0/16 by=prodOnlyIn#200
+dx  10.30.0.0/16 removed 65001:100 (before Nov 2026: not carried to Cloud WAN)
+dx  10.30.0.0/16 removed 65001:400 (before Nov 2026: not carried to Cloud WAN)
+DROP  10.30.0.0/16 by=prodOnlyIn#200
+DROP  10.40.0.0/16 by=prodOnlyIn#200
+dx  10.50.0.0/16 removed 65001:100:7 (before Nov 2026: not carried to Cloud WAN)
+dx  10.50.0.0/16 removed rt:65001:100 (before Nov 2026: not carried to Cloud WAN)
+dx  10.50.0.0/16 removed 7224:7300 (before Nov 2026: not carried to Cloud WAN)
+DROP  10.50.0.0/16 by=prodOnlyIn#200
