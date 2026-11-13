@@ -1,0 +1,13 @@
+# name | arguments for cwsim.sh (run-tests.ps1 maps them to cwsim.ps1 parameters). Paths are relative to the lab folder.
+01-before-prod | --policy core-network-policy.json --routes scenarios/onprem-routes.json --names prodOnlyIn --via-dx-before
+02-prod-share | --policy core-network-policy.json --routes scenarios/onprem-routes.json --names prodOnlyIn --via-dx
+03-dr-share | --policy core-network-policy.json --routes scenarios/onprem-routes.json --names drOnlyIn --via-dx
+04-dx-in-eu-west-1 | --policy core-network-policy.json --routes scenarios/onprem-routes.json --label dxOnPrem --edge eu-west-1 --direction inbound --via-dx
+05-dx-in-us-east-1 | --policy core-network-policy.json --routes scenarios/onprem-routes.json --label dxOnPrem --edge us-east-1 --direction inbound --via-dx
+06-edge-pair | --policy core-network-policy.json --routes scenarios/onprem-routes.json --names keepInUsEast1 --via-dx
+07-dx-out-us-east-1 | --policy core-network-policy.json --routes scenarios/aws-routes-us-east-1.json --label dxOnPrem --edge us-east-1 --direction outbound
+08-dx-out-eu-west-1 | --policy core-network-policy.json --routes scenarios/aws-routes-eu-west-1.json --label dxOnPrem --edge eu-west-1 --direction outbound
+09-lint-good | --policy core-network-policy.json --lint
+10-lint-broken | --policy scenarios/broken-policy.json --lint
+11-order | --policy tests/fixtures/semantics-policy.json --routes tests/fixtures/semantics-routes.json --names orderDemo,andOrDemo
+12-and-or | --policy tests/fixtures/semantics-policy.json --routes tests/fixtures/semantics-routes.json --names andOrDemo

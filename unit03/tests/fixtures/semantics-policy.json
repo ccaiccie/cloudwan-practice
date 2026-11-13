@@ -1,0 +1,28 @@
+{
+  "version": "2025.11",
+  "core-network-configuration": { "asn-ranges": ["64512-64555"], "edge-locations": [{ "location": "us-east-1" }] },
+  "segments": [{ "name": "hybrid" }],
+  "routing-policies": [
+    {
+      "routing-policy-name": "orderDemo",
+      "routing-policy-description": "The rule order from the AWS documentation: set, then allow, then drop the rest",
+      "routing-policy-direction": "inbound",
+      "routing-policy-number": 10,
+      "routing-policy-rules": [
+        { "rule-number": 10, "rule-definition": { "match-conditions": [{ "type": "prefix-in-cidr", "value": "10.0.0.0/8" }], "condition-logic": "and", "action": { "type": "set-local-preference", "value": 200 } } },
+        { "rule-number": 20, "rule-definition": { "match-conditions": [{ "type": "prefix-in-cidr", "value": "10.0.0.0/8" }], "condition-logic": "and", "action": { "type": "allow" } } },
+        { "rule-number": 30, "rule-definition": { "match-conditions": [{ "type": "prefix-in-cidr", "value": "0.0.0.0/0" }], "condition-logic": "and", "action": { "type": "drop" } } }
+      ]
+    },
+    {
+      "routing-policy-name": "andOrDemo",
+      "routing-policy-description": "and needs every condition; or needs any",
+      "routing-policy-direction": "inbound",
+      "routing-policy-number": 20,
+      "routing-policy-rules": [
+        { "rule-number": 10, "rule-definition": { "match-conditions": [{ "type": "asn-in-as-path", "value": 65010 }, { "type": "community-in-list", "value": "65010:50" }], "condition-logic": "and", "action": { "type": "set-med", "value": 50 } } },
+        { "rule-number": 20, "rule-definition": { "match-conditions": [{ "type": "community-in-list", "value": "65010:60" }, { "type": "med-equals", "value": 7 }], "condition-logic": "or", "action": { "type": "remove-community", "value": "65010:60" } } }
+      ]
+    }
+  ]
+}

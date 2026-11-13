@@ -1,0 +1,34 @@
+{
+  "routing-policies": [
+    {
+      "routing-policy-name": "filterTestRoutes",
+      "routing-policy-description": "Allow only routes tagged 65051:100 (test)",
+      "routing-policy-direction": "outbound",
+      "routing-policy-number": 100,
+      "routing-policy-rules": [
+        {
+          "rule-number": 100,
+          "rule-definition": {
+            "match-conditions": [
+              { "type": "community-in-list", "value": "65051:100" }
+            ],
+            "condition-logic": "or",
+            "action": { "type": "allow" }
+          }
+        },
+
+        {
+          "rule-number": 200,
+          "rule-definition": {
+            "match-conditions": [
+              { "type": "prefix-in-cidr", "value": "0.0.0.0/0" },
+              { "type": "prefix-equals", "value": "0.0.0.0/0" }
+            ],
+            "condition-logic": "or",
+            "action": { "type": "drop" }
+          }
+        }
+      ]
+    }
+  ]
+}

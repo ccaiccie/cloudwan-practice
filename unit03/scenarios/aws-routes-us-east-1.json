@@ -1,0 +1,8 @@
+{
+  "description": "Local routes the us-east-1 core network edge advertises toward the Direct Connect gateway (illustrative values).",
+  "routes": [
+    { "prefix": "10.100.0.0/16", "as-path": [64512], "communities": [], "note": "prod VPC in us-east-1" },
+    { "prefix": "10.110.0.0/16", "as-path": [64512], "communities": [], "note": "dr VPC in us-east-1" },
+    { "prefix": "172.16.8.0/24", "as-path": [64512, 65010], "communities": ["65010:50"], "note": "branch learned over Site-to-Site VPN, already tagged" }
+  ]
+}

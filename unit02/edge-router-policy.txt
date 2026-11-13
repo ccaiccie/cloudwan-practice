@@ -1,0 +1,31 @@
+! Illustrative IOS-style configuration (Unit 2 exercise).
+! Not tested on a device. Our ASN 65001, provider 64999.
+
+ip community-list standard PROD permit 65001:100
+ip community-list standard DR permit 65001:200
+ip community-list standard KEEP-LOCAL permit 65001:400
+
+! Outbound to the provider: tag, prepend DR
+route-map TO-PROVIDER permit 10
+ match ip address prefix-list PROD-NETS
+ set community 65001:100
+route-map TO-PROVIDER permit 20
+ match ip address prefix-list DR-NETS
+ set community 65001:200
+ set as-path prepend 65001 65001
+route-map TO-PROVIDER permit 30
+ match ip address prefix-list LAB-NETS
+ set community no-export additive
+
+! Inbound: prefer routes the provider marks local
+ip community-list standard PROVIDER-LOCAL permit 64999:8100
+route-map FROM-PROVIDER permit 10
+ match community PROVIDER-LOCAL
+ set local-preference 200
+route-map FROM-PROVIDER permit 20
+
+router bgp 65001
+ neighbor 192.0.2.1 remote-as 64999
+ neighbor 192.0.2.1 send-community
+ neighbor 192.0.2.1 route-map TO-PROVIDER out
+ neighbor 192.0.2.1 route-map FROM-PROVIDER in

@@ -1,0 +1,6 @@
+policies: orderDemo(#10 inbound) andOrDemo(#20 inbound)
+DROP  10.0.0.0/8 by=orderDemo#30
+ALLOW 10.1.0.0/16 by=orderDemo#20 changed-by=orderDemo#10 as-path=65010 med=- lp=200 communities=65010:50
+DROP  192.168.1.0/24 by=orderDemo#30
+DROP  172.16.0.0/12 by=orderDemo#30
+DROP  172.17.0.0/16 by=orderDemo#30

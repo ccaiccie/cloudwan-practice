@@ -1,0 +1,7 @@
+ERROR version is 2021.12; routing policies need 2025.11
+ERROR policy name prod-only-in: letters and digits only, max 100
+ERROR drOnlyIn#100: 65001:200:1 is not a standard community (ASN:value)
+WARN  keepInUsEast1#50: terminal catch-all before later rules; rules after it never run for matched routes
+ERROR markUsEast1#100: 64520:1001 uses an ASN inside the core network asn-ranges
+WARN  markEuWest1#100: 7224:1002 starts with an AWS-reserved ASN; avoid it (Direct Connect removes these from routes it receives)
+ERROR segment action references unknown routing policy prodOnlyIn
